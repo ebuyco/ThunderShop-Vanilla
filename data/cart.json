@@ -1,0 +1,32 @@
+[
+    {
+      "items": [],
+      "id": "cafda8fb"
+    },
+    {
+      "items": [
+        {
+          "id": "f6b1fbbc",
+          "quantity": 1
+        },
+        {
+          "id": "ed1a0390",
+          "quantity": 1
+        }
+      ],
+      "id": "fb1e6e85"
+    },
+    {
+      "items": [
+        {
+          "id": "62b582ba",
+          "quantity": 1
+        },
+        {
+          "id": "a8f3ec8c",
+          "quantity": 1
+        }
+      ],
+      "id": "ce54edf4"
+    }
+  ]
