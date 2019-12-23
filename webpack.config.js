@@ -14,7 +14,7 @@ module.exports = {
   devtool: 'source-map',
   target: 'web',
   devServer: {
-    contentBase: '/build',
+    contentBase: './public/dist',
     hot: true
   },
 
@@ -38,24 +38,60 @@ module.exports = {
        },
 
       // SASS/SCSS
+      // {
+      //   test: /\.scss$/,
+      //   use: [
+      //     MiniCssExtractPlugin.loader,
+      //     {
+      //       loader: 'style-loader',
+
+      //      }, {
+      //       loader: 'css-loader',
+      //       options: {
+      //         modules: true,
+      //         sourceMap: true,
+      //         importLoader: 2
+      //       }
+      //      },
+      //      "sass-loader"
+      //      {
+      //       loader: 'sass-loader',
+      //       options: {
+      //         sourceMap: true
+      //       }
+      //     }
+      //   ]
+
+      // },
+
+    //   {
+    //     test: /\.scss$/,
+    //     use: [
+    //         MiniCssExtractPlugin.loader,
+    //         { loader: 'css-loader', options: { sourceMap: true, importLoaders: 1 } },
+    //         { loader: 'sass-loader', options: { sourceMap: true } },
+    //     ],
+    // },
+
+    {
+      test: /\.s[c|a]ss$/,
+      use: [
+        'style-loader',
+      MiniCssExtractPlugin.loader,
+      { loader: 'css-loader', options: { sourceMap: true, importLoaders: 1 } },
+      { loader: 'sass-loader', options: { sourceMap: true} },
+      { loader: 'postcss-loader', options: { sourceMap: true} },
+
+    ]
+    },
+
+      // {
+      //   use: ['style-loader', 'css-loader'],
+      //   test: /\.css$/
+      // },
       {
-        test: /\.scss$/,
-        use: [
-
-          {
-            loader: 'style-loader',
-           }, {
-            loader: 'css-loader',
-           }, {
-            loader: 'sass-loader',
-
-          }]
-
-      },
-
-      {
-        use: ['style-loader', 'css-loader'],
-        test: /\.css$/
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         // Loads the javacript into html template provided.
@@ -89,25 +125,42 @@ module.exports = {
 
     ]
   },
+  // optimization: {
+  //   splitChunks: {
+  //     cacheGroups: {
+  //       styles: {
+  //         name: 'styles',
+  //         test: /\.css$/,
+  //         chunks: 'all',
+  //         enforce: true,
+  //       },
+  //     },
+  //   },
+  // },
   optimization: {
     splitChunks: {
+      chunks: 'all',
       cacheGroups: {
         styles: {
           name: 'styles',
-          test: /\.css$/,
+          test: /\.s?css$/,
           chunks: 'all',
+          minChunks: 1,
+          reuseExistingChunk: true,
           enforce: true,
         },
-      },
+      }
     },
-  },
+},
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: '[name].css',
-      chunkFilename: '[id].css',
+      // filename: '[name].css',
+      // chunkFilename: '[id].css',
+      filename: 'style.css',
+      chunkFilename: "[name].css"
     }),
     new CopyPlugin([
       {
@@ -116,16 +169,19 @@ module.exports = {
       },
     ]),
     // can be deleted
-    new webpack.HotModuleReplacementPlugin(),
+    // new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin()
   ],
   output: {
     // path: path.join(process.cwd(), '/build'),
     // publicPath: '/',
     // filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public', 'dist'),
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[chunkhash].js',
+    // path: path.resolve(__dirname, 'public', 'dist'),
     // we can use "substitutions" in file names like [name] and [hash]
     // name will be `App` because that is what we used above in our entry
-    filename: '[name].bundle.js'
+    // filename: '[name].bundle.js',
+    publicPath: "./public/dist"
   }
 };
