@@ -30,12 +30,19 @@ module.exports = {
       use: [
         'style-loader',
       MiniCssExtractPlugin.loader,
-      { loader: 'css-loader', options: { sourceMap: true, importLoaders: 1 } },
-      { loader: 'sass-loader', options: { sourceMap: true} },
-      { loader: 'postcss-loader',
-      options:
       {
-        plugins() { return [autoprefixer({ browsers: 'last 3 versions' })]; },
+        loader: 'css-loader',
+        options: { sourceMap: true, importLoaders: 1 }
+       },
+      {
+        loader: 'sass-loader',
+        options: { sourceMap: true}
+       },
+      {
+       loader: 'postcss-loader',
+       options:
+      {
+        plugins() { return [autoprefixer()]; },
         sourceMap: true,
 
       },
@@ -46,7 +53,19 @@ module.exports = {
 
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        use: [
+          // MiniCssExtractPlugin.loader,
+          'css-loader',
+          'style-loader',
+          'postcss-loader',
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../../public/dist',
+            },
+          },
+        ],
+
       },
       {
 
@@ -79,6 +98,19 @@ module.exports = {
 
     ]
   },
+  resolve: {
+    alias: {
+        '@scss': path.resolve(__dirname, '../../public/sass'),
+        '@img': path.resolve(__dirname, '../../public/images'),
+        '@': path.resolve(__dirname, '../../public')
+    },
+    modules: [
+        'node_modules',
+        path.resolve(__dirname, '../../public')
+    ],
+    extensions: ['.js']
+},
+
 
   optimization: {
     splitChunks: {
@@ -98,8 +130,8 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'style.css',
-      chunkFilename: "[name].css"
+      filename: '[name].css',
+      chunkFilename: '[id].css'
     }),
     new CopyPlugin([
       {
