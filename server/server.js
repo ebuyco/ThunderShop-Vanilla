@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const webpackConfig = require('../client/webpack/webpack.config.js');
 const cors = require('cors');
 const path = require('path');
+const productsRouter = require('../client/routes/products');
 const app = express();
 
 
@@ -16,6 +17,7 @@ app.use(cors());
 
 
 app.use(bodyParser.json());
+app.use(productsRouter);
 
 app.use(webpackMiddleware(webpack(webpackConfig)));
 

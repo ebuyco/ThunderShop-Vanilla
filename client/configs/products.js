@@ -1,0 +1,1 @@
+const Repository = require('./config');

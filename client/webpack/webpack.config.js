@@ -47,8 +47,8 @@ module.exports = {
 
       },
       },
-
-    ]
+      ],
+      exclude: /\.module\.css$/
     },
 
       {
@@ -65,7 +65,7 @@ module.exports = {
             },
           },
         ],
-
+        include: /\.module\.css$/
       },
       {
 
@@ -102,11 +102,11 @@ module.exports = {
     alias: {
         '@scss': path.resolve(__dirname, '../../public/sass'),
         '@img': path.resolve(__dirname, '../../public/images'),
-        '@': path.resolve(__dirname, '../../public')
+        '@': path.resolve(__dirname, '../../public/dist')
     },
     modules: [
         'node_modules',
-        path.resolve(__dirname, '../../public')
+        path.resolve(__dirname, '../../public/dist')
     ],
     extensions: ['.js']
 },
@@ -129,6 +129,7 @@ module.exports = {
 },
   plugins: [
     new CleanWebpackPlugin(),
+    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css'
@@ -139,14 +140,13 @@ module.exports = {
         to: path.join(process.cwd(), '/build'),
       },
     ]),
-
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin()
   ],
   output: {
 
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[chunkhash].js',
-
-    publicPath: "./public/dist"
+    filename: '[name].[hash].js',
+    publicPath: "../../public/dist"
   }
 };

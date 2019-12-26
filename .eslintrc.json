@@ -1,5 +1,16 @@
 {
-  "rules": {},
+  "rules": {
+    "no-console": 2,
+    "prettier/prettier": [
+      "error",
+      {
+        "trailingComma": "es5",
+        "singleQuote": true,
+        "printWidth": 120,
+        "tabWidth": 8
+      }
+    ]
+  },
   "env": {
     "es6": true,
     "browser": true
