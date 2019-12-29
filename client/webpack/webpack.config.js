@@ -32,7 +32,7 @@ module.exports = {
       MiniCssExtractPlugin.loader,
       {
         loader: 'css-loader',
-        options: { sourceMap: true, importLoaders: 1 }
+        options: { sourceMap: true, importLoaders: 2 }
        },
       {
         loader: 'sass-loader',
@@ -124,6 +124,12 @@ module.exports = {
           reuseExistingChunk: true,
           enforce: true,
         },
+        css: {
+          test: /\.(css|sass|scss)$/,
+          name: "commons",
+          chunks: "all",
+          minChunks: 2,
+      }
       }
     },
 },
