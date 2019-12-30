@@ -7,7 +7,7 @@
     "dev": "nodemon index.js --ignore client",
     "prod": "node ./index.js",
     "watch": "nodemon ./index.js --ignore public/",
-    "start": "concurrently \"npm run watch\" \"npm run assets\" --names \"💻,📦\" --prefix name",
+    "start": "concurrently \"npm run watch\" \"npm run assets\" --names \"🖥,⌚️,🚀,📦\" --prefix name",
     "assets": "webpack -w --display-max-modules 0",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"

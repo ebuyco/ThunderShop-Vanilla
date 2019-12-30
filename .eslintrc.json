@@ -14,9 +14,9 @@
   "env": {
     "es6": true,
     "browser": true,
-    "node": true
-    // "jquery": true,
-    // "jest": true
+    "node": true,
+    "jquery": true,
+    "jest": true
   },
   "parser": "babel-eslint",
   "parserOptions": {
@@ -33,6 +33,7 @@
     "prettier"
   ],
   "plugins": [
+    "airbnb",
     "prettier",
     "html"
   ],

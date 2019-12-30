@@ -1,3 +1,4 @@
+ // <link href="/sass/style.scss" rel="stylesheet"/>
 module.exports = ({ content }) => {
   return `
     <!DOCTYPE html>
@@ -6,7 +7,7 @@ module.exports = ({ content }) => {
               <meta charset="utf-8>
               <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
               <title>Vanilla Shop</title>
-              <link href="/public/sass/style.scss" rel="stylesheet"/>
+             <link href="/dist/style.css" rel="stylesheet"/>
           </head>
           <body>
             <header>

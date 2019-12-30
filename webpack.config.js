@@ -101,7 +101,7 @@ const config = {
       target: 'web',
       devServer: {
         contentBase: './public/dist',
-        // hot: true
+        hot: true
       },
       module: {
         rules: [javascript, sass, css, html, imageConfig, fontConfig]
@@ -111,7 +111,7 @@ const config = {
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
           filename: 'style.css',
-          chunkFilename: "[name].css"
+          chunkFilename: 'style.css'
         }),
         new CopyPlugin([
           {
@@ -119,6 +119,7 @@ const config = {
             to: path.join(process.cwd(), './public/dist/images'),
           },
         ]),
+        // new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin()
       ],
       output: {
