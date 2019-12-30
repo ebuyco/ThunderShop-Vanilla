@@ -1,3 +1,25 @@
+// {
+//   "parser": "@typescript-eslint/parser",
+//   "extends": [
+//       "react-app",
+//       "plugin:prettier/recommended",
+//       "prettier/@typescript-eslint",
+//       "prettier/babel",
+//       "prettier/react"
+//   ],
+//   "plugins": [
+//       "@typescript-eslint",
+//       "import",
+//       "jsx-a11y",
+//       "prettier",
+//       "react",
+//       "react-hooks"
+//   ],
+//   "rules": {
+//       "no-use-before-define": "off",
+//       "prettier/prettier": "error"
+//   }
+// }
 {
   "rules": {
     "no-console": 2,
@@ -30,7 +52,8 @@
   },
   "extends": [
     "airbnb",
-    "prettier"
+    "plugin:prettier/recommended",
+    "prettier/babel"
   ],
   "plugins": [
     "airbnb",

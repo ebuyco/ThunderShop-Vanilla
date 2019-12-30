@@ -19,7 +19,6 @@ router.post('/carts/products', async (req, res) => {
     const existingItem = cart.items.find(item => item.id === req.body.productId);
     if(existingItem){
       existingItem.quantity++;
-
     } else {
       cart.items.push({
         id: req.body.productId, quantity: 1
