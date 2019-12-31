@@ -21,17 +21,26 @@ const javascript = {
 // }
 
 const sass = {
-  test: /\.(scss)$/,
+  // test: /\.(scss)$/,
+  test: /\.s[ac]ss$/i,
   use: [
     'style-loader',
   MiniCssExtractPlugin.loader,
   {
     loader: 'css-loader',
-    options: { sourceMap: true, importLoaders: 1 }
+    options:
+    {
+      sourceMap: true,
+      importLoaders: 1
+    },
+
    },
   {
     loader: 'sass-loader',
-    options: { sourceMap: true}
+    options: {
+       sourceMap: true,
+       outputStyle: 'uncompressed'
+       }
    },
   {
    loader: 'postcss-loader',
@@ -98,16 +107,19 @@ const config = {
      mode: 'none',
      entry: './public/javascripts/app.js',
       devtool: 'source-map',
+      // devtool: 'inline-source-map',
       target: 'web',
       devServer: {
-        contentBase: './public/dist',
-        hot: true
+        contentBase: './public/dist'
+        // hot: true
       },
       module: {
         rules: [javascript, sass, css, html, imageConfig, fontConfig]
       },
 
       plugins: [
+        new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
+        new webpack.ProgressPlugin(),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
           filename: 'style.css',

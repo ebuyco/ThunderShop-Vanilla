@@ -5,10 +5,14 @@
 // };
 module.exports = {
   parser: 'sugarss',
-  plugins: {
+  plugins: [
+      require('cssnano')({
+        preset: 'default',
+    }),
+  ],
+  {
     'postcss-import': {},
     'postcss-preset-env': {},
-    'autoprefixer': {},
-    cssnano: {}
+   'autoprefixer': {},
   }
 };
