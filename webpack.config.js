@@ -110,7 +110,8 @@ const config = {
       // devtool: 'inline-source-map',
       target: 'web',
       devServer: {
-        contentBase: './public/dist'
+        contentBase: './public/dist',
+        open: true,
         // hot: true
       },
       module: {
