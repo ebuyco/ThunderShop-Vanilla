@@ -51,7 +51,8 @@
     }
   },
   "extends": [
-    "airbnb",
+    // "airbnb",
+    "plugin:airbnb/recommended",
     "plugin:prettier/recommended",
     "prettier/babel"
   ],
