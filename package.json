@@ -9,8 +9,7 @@
     "watch": "nodemon ./index.js --ignore public/",
     "start": "concurrently \"npm run watch\" \"npm run assets\" --names \"🖥,⌚️,🚀,📦\" --prefix name",
     "assets": "webpack -w --display-max-modules 0",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint './client/**/*.js'"
   },
   "author": "",
   "license": "ISC",

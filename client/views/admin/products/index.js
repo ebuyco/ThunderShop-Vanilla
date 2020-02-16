@@ -37,7 +37,7 @@ module.exports = ({ products }) => {
                             </tr>
                       </thead>
                       <tbody>
-                              ${renderedProducts}
+                              ${renderProducts}
                       </tbody>
                 </table>
             `
