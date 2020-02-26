@@ -132,9 +132,22 @@ const config = {
             to: path.join(process.cwd(), './public/dist/images'),
           },
         ]),
+
+        new webpack.HotModuleReplacementPlugin({multiStep: true}),
         // new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin()
       ],
+      watchOptions: {
+        aggregateTimeout: 300,
+        poll: 1000
+    },
+    devServer: {
+      hot: true,
+      inline: true,
+      historyApiFallback: true,
+      contentBase: './',
+      port:4000
+    },
       output: {
         path: path.resolve(__dirname, './public/dist'),
         filename: '[name].[chunkhash].js',

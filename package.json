@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "pre-start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "dev": "nodemon index.js --ignore client",
     "prod": "node ./index.js",
     "watch": "nodemon ./index.js --ignore public/",
@@ -58,7 +59,8 @@
     "style-loader": "^1.1.1",
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.10",
-    "webpack-dev-middleware": "^3.7.2"
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-dev-server": "^3.10.3"
   },
   "browserslist": [
     "defaults",
