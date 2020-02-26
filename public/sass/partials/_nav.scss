@@ -1,0 +1,37 @@
+.navbar--navbar-top{
+  justify-content: center;
+  text-transform: uppercase;
+  background-color: #333;
+  color: #fff;
+}
+.container--wrapper-navbar--container{
+  color: #fff;
+  width: 100%;
+  max-width: 80%;
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+.icon-phone{
+  color: #fff;
+}
+.link--name
+{
+  color: #fff;
+}
+.social--wrapper--nav{
+       display: flex;
+      justify-content: center;
+      text-align: center;
+}
+.phone--wrapper{
+    text-align: left;
+}
+.link--name--email{
+  text-align: right;
+  color: #fff;
+}
+.phone--email
+{
+ text-align: right;
+}

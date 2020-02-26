@@ -11,17 +11,17 @@ module.exports = ({ content }) => {
           </head>
           <body>
             <header>
-                  <nav class="navbar navbar-top">
+                  <nav class="navbar--navbar-top">
                         <div class="container navbar-container">
-                             <div class="container wrapper-navbar-container">
-                                  <ul class="social">
-                                      <li>
-                                             <a href=""><span class="icon-phone"></span>+122 233 987 6543</a>
-                                      </li>
-                                    <li>
-                                            <a href=""><span class="icon-email"></span>vanillajs#shop.com</a>
-                                    </li>
-                                  </ul>
+                             <div class="container--wrapper-navbar--container">
+
+                                      <div class="phone--wrapper">
+                                             <a href="" class="link--name"><span class="icon-phone"></span>+122 233 987 6543</a>
+                                      </div>
+                                    <div class="phone--email">
+                                            <a href="" class="link--name--email"><span class="icon-email"></span>vanillajs#shop.com</a>
+                                    </div>
+
                              </div>
                              <div class="social">
                                 <ul class="social--wrapper">
