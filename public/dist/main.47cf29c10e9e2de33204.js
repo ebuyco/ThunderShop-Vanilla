@@ -113,8 +113,7 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var id = "!!../../node_modules/mini-css-extract-plugin/dist/loader.js!../../node_modules/css-loader/dist/cjs.js??ref--5-2!../../node_modules/sass-loader/dist/cjs.js??ref--5-3!../../node_modules/postcss-loader/src/index.js??ref--5-4!./style.scss";
-var update = api(id, content, options);
+var update = api(content, options);
 
 var exported = content.locals ? content.locals : {};
 
@@ -128,8 +127,6 @@ module.exports = exported;
 
 "use strict";
 
-
-var stylesInDom = {};
 
 var isOldIE = function isOldIE() {
   var memo;
@@ -171,40 +168,53 @@ var getTarget = function getTarget() {
   };
 }();
 
-function addModulesToDom(id, list, options) {
-  id = options.base ? id + options.base : id;
+var stylesInDom = [];
 
-  if (!stylesInDom[id]) {
-    stylesInDom[id] = [];
+function getIndexByIdentifier(identifier) {
+  var result = -1;
+
+  for (var i = 0; i < stylesInDom.length; i++) {
+    if (stylesInDom[i].identifier === identifier) {
+      result = i;
+      break;
+    }
   }
+
+  return result;
+}
+
+function modulesToDom(list, options) {
+  var idCountMap = {};
+  var identifiers = [];
 
   for (var i = 0; i < list.length; i++) {
     var item = list[i];
-    var part = {
+    var id = options.base ? item[0] + options.base : item[0];
+    var count = idCountMap[id] || 0;
+    var identifier = "".concat(id, " ").concat(count);
+    idCountMap[id] = count + 1;
+    var index = getIndexByIdentifier(identifier);
+    var obj = {
       css: item[1],
       media: item[2],
       sourceMap: item[3]
     };
-    var styleInDomById = stylesInDom[id];
 
-    if (styleInDomById[i]) {
-      styleInDomById[i].updater(part);
+    if (index !== -1) {
+      stylesInDom[index].references++;
+      stylesInDom[index].updater(obj);
     } else {
-      styleInDomById.push({
-        updater: addStyle(part, options)
+      stylesInDom.push({
+        identifier: identifier,
+        updater: addStyle(obj, options),
+        references: 1
       });
     }
+
+    identifiers.push(identifier);
   }
 
-  for (var j = list.length; j < stylesInDom[id].length; j++) {
-    stylesInDom[id][j].updater();
-  }
-
-  stylesInDom[id].length = list.length;
-
-  if (stylesInDom[id].length === 0) {
-    delete stylesInDom[id];
-  }
+  return identifiers;
 }
 
 function insertStyleElement(options) {
@@ -258,7 +268,7 @@ var replaceText = function replaceText() {
 }();
 
 function applyToSingletonTag(style, index, remove, obj) {
-  var css = remove ? '' : obj.css; // For old IE
+  var css = remove ? '' : obj.media ? "@media ".concat(obj.media, " {").concat(obj.css, "}") : obj.css; // For old IE
 
   /* istanbul ignore if  */
 
@@ -345,7 +355,7 @@ function addStyle(obj, options) {
   };
 }
 
-module.exports = function (id, list, options) {
+module.exports = function (list, options) {
   options = options || {}; // Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
   // tags it will allow on a page
 
@@ -353,9 +363,36 @@ module.exports = function (id, list, options) {
     options.singleton = isOldIE();
   }
 
-  addModulesToDom(id, list, options);
+  list = list || [];
+  var lastIdentifiers = modulesToDom(list, options);
   return function update(newList) {
-    addModulesToDom(id, newList || [], options);
+    newList = newList || [];
+
+    if (Object.prototype.toString.call(newList) !== '[object Array]') {
+      return;
+    }
+
+    for (var i = 0; i < lastIdentifiers.length; i++) {
+      var identifier = lastIdentifiers[i];
+      var index = getIndexByIdentifier(identifier);
+      stylesInDom[index].references--;
+    }
+
+    var newLastIdentifiers = modulesToDom(newList, options);
+
+    for (var _i = 0; _i < lastIdentifiers.length; _i++) {
+      var _identifier = lastIdentifiers[_i];
+
+      var _index = getIndexByIdentifier(_identifier);
+
+      if (stylesInDom[_index].references === 0) {
+        stylesInDom[_index].updater();
+
+        stylesInDom.splice(_index, 1);
+      }
+    }
+
+    lastIdentifiers = newLastIdentifiers;
   };
 };
 
@@ -367,4 +404,4 @@ module.exports = function (id, list, options) {
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.1d7a320169515a7ac036.js.map
+//# sourceMappingURL=main.47cf29c10e9e2de33204.js.map

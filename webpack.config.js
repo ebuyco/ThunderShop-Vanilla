@@ -39,7 +39,7 @@ const sass = {
     loader: 'sass-loader',
     options: {
        sourceMap: true,
-       outputStyle: 'uncompressed'
+      //  outputStyle: 'uncompressed'
        }
    },
   {
@@ -133,7 +133,7 @@ const config = {
           },
         ]),
 
-        new webpack.HotModuleReplacementPlugin({multiStep: true}),
+        // new webpack.HotModuleReplacementPlugin({multiStep: true}),
         // new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin()
       ],

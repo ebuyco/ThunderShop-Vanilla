@@ -5,7 +5,7 @@ const cartShowTemplate = require('../views/carts/show');
 
 const router = express.Router();
 
-router.post('/carts/products', async (req, res) => {
+router.post('/cart/products', async (req, res) => {
     let cart;
     if(!req.session.cartId) {
       cart = await cartsRepo.create({ items: [] });

@@ -422,5 +422,14 @@ a {
 button {
   font-family: 'Panama', sans-serif; }
 
+.columns.is__centered {
+  margin: 0 auto; }
+
+.banner--sale {
+  width: 100%;
+  height: auto;
+  max-width: 70%;
+  margin: 0 auto; }
+
 
 /*# sourceMappingURL=style.css.map*/
