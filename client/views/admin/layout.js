@@ -31,6 +31,7 @@ module.exports = ({ content }) => {
                 <div class="container__admin__content">
                     ${content}
                 </div>
+            <script src="/dist/main.js"></script>
           </body>
       </html>
     `;

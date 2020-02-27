@@ -412,9 +412,9 @@ module.exports = function (list, options) {
 
 const test = 'hello';
 console.log(test);
-const substance = 'hello test2';
+const substance = 'hellotest2';
 console.log(substance);
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.19244d2acf8883ca9f61.js.map
+//# sourceMappingURL=main.js.map

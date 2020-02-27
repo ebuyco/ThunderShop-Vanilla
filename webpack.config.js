@@ -150,7 +150,8 @@ const config = {
     },
       output: {
         path: path.resolve(__dirname, './public/dist'),
-        filename: '[name].[chunkhash].js',
+        // filename: '[name].[chunkhash].js',
+        filename: '[name].js',
         publicPath: "./public/dist"
       }
 

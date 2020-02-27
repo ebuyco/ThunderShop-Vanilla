@@ -21,7 +21,7 @@ module.exports = ({ products }) => {
                           </button>
                         </form>
                     </footer>
-                </div>
+                </div>s
             </div>
 
            `;

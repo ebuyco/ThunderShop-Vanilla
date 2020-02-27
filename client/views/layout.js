@@ -59,7 +59,7 @@ module.exports = ({ content }) => {
                        </nav>
             </header>
               ${content}
-
+          <script src="/dist/main.js"></script>
           </body>
         </html>
 
