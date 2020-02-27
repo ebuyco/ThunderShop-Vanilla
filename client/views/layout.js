@@ -8,7 +8,7 @@ module.exports = ({ content }) => {
               <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
               <title>Vanilla Shop</title>
              <link href="/dist/style.css" rel="stylesheet"/>
-          </head>
+           </head>
           <body>
             <header>
                   <nav class="navbar--navbar-top">
@@ -59,6 +59,7 @@ module.exports = ({ content }) => {
                        </nav>
             </header>
               ${content}
+
           </body>
         </html>
 

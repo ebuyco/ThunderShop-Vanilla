@@ -92,8 +92,12 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sass_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _sass_style_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_sass_style_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _vanilla_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
+/* harmony import */ var _vanilla_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_vanilla_js__WEBPACK_IMPORTED_MODULE_1__);
  // const sass = require('../sass/style.scss');
 // module.exports = sass;
+
+
 
 /***/ }),
 /* 1 */
@@ -402,6 +406,15 @@ module.exports = function (list, options) {
 
 // extracted by mini-css-extract-plugin
 
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+const test = 'hello';
+console.log(test);
+const substance = 'hello test2';
+console.log(substance);
+
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.3b6dbd7b4bccef594f07.js.map
+//# sourceMappingURL=main.19244d2acf8883ca9f61.js.map

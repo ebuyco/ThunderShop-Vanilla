@@ -105,7 +105,7 @@ const fontConfig = {
 
 const config = {
      mode: 'none',
-     entry: './public/javascripts/app.js',
+     entry: './public/javascript/app.js',
       devtool: 'source-map',
       // devtool: 'inline-source-map',
       target: 'web',

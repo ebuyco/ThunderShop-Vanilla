@@ -96,7 +96,7 @@ const fontConfig = {
 
 const config = {
      mode: 'none',
-     entry: './public/javascripts/app.js',
+     entry: './public/javascript/app.js',
       devtool: 'source-map',
       target: 'web',
       devServer: {
