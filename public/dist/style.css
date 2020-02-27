@@ -470,5 +470,10 @@ button {
 .phone--email {
   text-align: center; }
 
+.image--icon {
+  width: 100%;
+  height: auto;
+  max-width: 80%; }
+
 
 /*# sourceMappingURL=style.css.map*/

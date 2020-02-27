@@ -1,4 +1,5 @@
  // <link href="/sass/style.scss" rel="stylesheet"/>
+
 module.exports = ({ content }) => {
   return `
     <!DOCTYPE html>
@@ -14,13 +15,13 @@ module.exports = ({ content }) => {
                   <nav class="navbar--navbar-top">
                         <div class="container navbar-container">
                              <div class="container--wrapper-navbar--container">
-
+                             <div class="phone--email">
+                                        <a href="" class="link--name--email"><img class="image--icon" src='/dist/images/truck.svg' /></a>
+                                </div>
                                       <div class="phone--wrapper">
                                              <a href="" class="link--name"><span class="icon-phone"></span>+122 233 987 6543</a>
                                       </div>
-                                    <div class="phone--email">
-                                            <a href="" class="link--name--email"><span class="icon-email"></span>vanillajs#shop.com</a>
-                                    </div>
+
 
                              </div>
                              <div class="social">
@@ -58,6 +59,7 @@ module.exports = ({ content }) => {
                           </div>
                        </nav>
             </header>
+
               ${content}
           <script src="/dist/main.js"></script>
           </body>

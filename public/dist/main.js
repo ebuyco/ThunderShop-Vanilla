@@ -410,10 +410,7 @@ module.exports = function (list, options) {
 /* 4 */
 /***/ (function(module, exports) {
 
-const test = 'hello';
-console.log(test);
-const substance = 'hellotest2';
-console.log(substance);
+
 
 /***/ })
 /******/ ]);
