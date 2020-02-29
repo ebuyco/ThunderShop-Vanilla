@@ -19,7 +19,7 @@ module.exports = ({ content }) => {
                                         <a href="" class="link--name--email"><img class="image--icon" src='/dist/images/truck.svg' /></a>
                                 </div>
                                       <div class="phone--wrapper">
-                                             <a href="" class="link--name"><span class="icon-phone"></span>+122 233 987 6543</a>
+                                             <a href="" class="link--name"><span class="icon-phone"></span> | +122 233 987 6543</a>
                                       </div>
 
 
@@ -59,7 +59,32 @@ module.exports = ({ content }) => {
                           </div>
                        </nav>
             </header>
-
+              <div class="slider">
+                    <div class="slides">
+                          <div class="slide">
+                                <img src="/dist/images/banner-carousel1.jpg" class="img--carousel"/>
+                          </div>
+                          <div class="slide current">
+                              2
+                          </div>
+                          <div class="slide">
+                                3
+                          </div>
+                          <div class="slide">
+                                4
+                          </div>
+                          <div class="slide">
+                                5
+                          </div>
+                          <div class="slide">
+                                6
+                          </div>
+                    </div>
+                    <div class="controls">
+                          <button class="goToPrev">← Prev</button>
+                          <button class="goToNext">Next →</button>
+                  </div>
+              </div>
               ${content}
           <script src="/dist/main.js"></script>
           </body>
